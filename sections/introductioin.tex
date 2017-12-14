@@ -1,0 +1,16 @@
+\chapter{Introduction}\label{ch:introduction}
+
+In this chapter the there will be introduce the workings off the 2 nodes.
+
+\section{UI\_Turtlesim\_mover node}
+
+The UI\_Turtlesim\_mover node, is the publisher to the Turtlesim\_mover node.\\
+This program will ask whether you want the Turtlesim to draw a circle, square or star. Hereby the user can press 1,2,3 accordingly to what type of object the user want drawn. This will then send a topic to the subscriber, with information about the choice which the user made.\\
+
+
+\section{Turtlesim\_mover node}
+
+
+The Turtlesim\_mover node is the node that makes the turtlesim move in a square, circle or random moving.\\
+It listens to the topic that the UI publishes on, when the user picks a choice for the turtlesim.
+It will send a messages back to the UI node and confirm that it needs some thing to do or it is doing the command of the user.\\
