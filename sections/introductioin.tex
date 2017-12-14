@@ -1,14 +1,20 @@
-\chapter{Introduction}\label{ch:introduction}
+\chapter{Introduction}
 
-In this chapter the there will be introduce the workings off the 2 nodes.
+\section{Short introduction to ROS}
+ROS or Robot Operation System was develop by Willows garage in 2007, but now it is open source. ROS is a framework to interact with robots. It is a complication of tools, libraries, and different environments\cite{ROSINTRO}. ROS uses nodes that communicate with each other either back and forward or one way, the way they do this is by publishing or subscribing to topics. One down side to just publishing there is no feed back so the publisher does not if the subscriber got the messages that was send.\\
+In this mini-project there will be a demonstration of how this can be setup.
+\section{Introduction of nodes}\label{ch:introduction}
 
-\section{UI\_Turtlesim\_mover node}
+In this section the there will be introduce the workings off the 2 nodes.
+
+\subsection{UI\_Turtlesim\_mover node}
 
 The UI\_Turtlesim\_mover node, is the publisher to the Turtlesim\_mover node.\\
-This program will ask whether you want the Turtlesim to draw a circle, square or star. Hereby the user can press 1,2,3 accordingly to what type of object the user want drawn. This will then send a topic to the subscriber, with information about the choice which the user made.\\
+This program will ask whether you want the Turtlesim to draw a circle, square or star.\\
+This is the  the user can press 1,2,3 accordingly to what type of object the user want drawn. This will then send a topic to the subscriber, with information about the choice which the user made.\\
 
 
-\section{Turtlesim\_mover node}
+\subsection{Turtlesim\_mover node}
 
 
 The Turtlesim\_mover node is the node that makes the turtlesim move in a square, circle or random moving.\\
