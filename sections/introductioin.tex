@@ -9,7 +9,7 @@ In this mini-project there will be a demonstration of how this can be setup.
 The turtlesim is a simulator that was developed by ROS to get a better understanding of nodes, topics and visualizing the communication between the nodes.\\
 In the simulator a turtle can be manipulated in a closed environment. One thing to know about the turtlesim space is that it works on a bi-dimensional plane, where the position of the turtle is given by a x and an y coordinate and the heading is given by the angle theta.
 
-\section{Introduction of nodes}\label{ch:introduction}
+\section{Introduction of the nodes}\label{ch:introduction}
 
 
 In this section there will be an introduction to how the 2 nodes are functioning. 
@@ -17,12 +17,12 @@ In this section there will be an introduction to how the 2 nodes are functioning
 \subsection{UI\_Turtlesim\_mover node}
 
 The UI\_Turtlesim\_mover node, is the publisher to the Turtlesim\_mover node.\\
-This program will ask whether you want the Turtlesim to draw a circle, square or a star.\\
-This is where the user can press 1,2,3 accordingly to what type of object the user would like to be drawn. This will then send a topic to the subscriber, with the information about the choice which the user made.\\
+This program will ask whether you want the Turtlesim to draw a circle, square or random-walk.\\
+This is where the user can press 1,2 or 3 accordingly to what type of object the user would like to be drawn. This will then send a topic to the subscriber, with the information about the choice which the user made.\\
 
 
 \subsection{Turtlesim\_mover node}
 
-The Turtlesim\_mover node is the node which make the turtlesim move in a square, circle or random movements.\\
+The Turtlesim\_mover node is the node which make the turtlesim move in a square, circle or random-walk.\\
 It is listening to the topic, which the UI is publishing on when the user picks a choice for the turtlesim.
-It will send a message back to the UI node and confirm that it needs something to do or that it is doing the command of the user.\\
+It will send a message back to the UI-node and confirm that it needs something to do or that it is doing the command of the user.\\

@@ -1,10 +1,10 @@
 \chapter{A look into the codes} \label{ch:lookinto}
 
-In this chapter segments of the code will be explained.
+In this chapter the code will be explained.\\
 
 \section{Include files} 
 
-The compiler will always look through the code in a linear fashion, which is why it is required to include all the files that is necessary in the code, in the first lines of code.\\
+The compiler will always look through the code in a linear fashion, which is why it is required to include all the files which are necessary in the code, in the first lines of the code.\\
 
 \begin{figure}[h]
 \begin{center}
@@ -15,16 +15,16 @@ The compiler will always look through the code in a linear fashion, which is why
 
 \begin{itemize}
 \item \texttt{ros/ros.h}\\
-This is a header to include all the headers necessary for the commonly used pieces in the ROS system.\\
+This is a header to include all the headers needed for the most commonly used pieces in the ROS system.\\
 \item \texttt{geometry\_msgs/Twist.h}\\
-Includes the headers for the commonly used geometrics, like poses, vectors and points.\\
+Includes the headers for the most commonly used geometrics, like poses, vectors and points.\\
 \item \texttt{turtlesim/pose.h}\\
 This header file is only needed in the \texttt{Turtlesim\_mover}, since turtlesim/pose is a publisher.\\
 This creates the headers for the pose of the virtual turtle.\\
 \item \texttt{std\_msgs/String.h}\\
 Is an automatized string header, which is generated from the String.msg file.\\
 \item \texttt{<iostream>}\\
-This is the input/output stream and helps with just that.\\
+This is the input/output stream.\\
 \item \texttt{<sstream>}\\
 Includes the std::stringstream.\\
 
@@ -32,7 +32,7 @@ Includes the std::stringstream.\\
 
 
 \section{The node handler}
-Before it is possible to use any ROS components there must be a initiation of ROS see first line in figure \ref{fig:nodehandel}. The init needs 3 arguments argv, argc and a name. In this one it is called publish\_velocity. The nodehandle in figure \ref{fig:nodehandel} on the second line, is needed to initiate the node. The nodehandle is declared to be "n" in the mover node.
+Before it is possible to use any ROS components there must be an initiation of ROS see first line in figure \ref{fig:nodehandel}. The init needs 3 arguments argv, argc and a name. In this one it is called publish\_velocity. The nodehandle in figure \ref{fig:nodehandel} on the second line, is needed to initiate the node. The nodehandle is declared to be "n" in the mover node.\\
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=.9\textwidth]{figures/nodehandel.png}
@@ -48,12 +48,12 @@ Before it is possible to use any ROS components there must be a initiation of RO
 \caption{Publisher}
 \end{center}
 \end{figure}\label{fig:publihser}
-The publisher need to be declared as a variable, which is done on the first line see figure \ref{fig:publihser}.The next line show the message which is published, in this case a geometry::Twist and what topic it is published on /turtle1/cmd\_vel.
+The publisher need to be declared as a variable, which is done on the first line see figure \ref{fig:publihser}.The next line show the message which is published, in this case a geometry::Twist and the topic it is published on /turtle1/cmd\_vel.\\
 
 
 \section{Subscriber}
-The subscriber has more or less the same syntax to be declared as a publisher see figure \ref{fig:subscriber}. The syntax is a bit different, in the way, that it does not need to know what message it has to listen for, but only which topic it need to subscribe to. In the case of this subscriber it listens to what is published on the Commands topic, it can put up to 1000 messages into a queue, if there are more in the buffer, they will get discarded.\\ 
-To access the subscriber the function named chatterCallback is necessary, and every time something is published on the topic Commands it will be written to the chatterCallback function.
+The subscriber has more or less the same syntax to be declared as a publisher see figure \ref{fig:subscriber}. The syntax is a bit different, in the way, that it does not need to know what message it has to listen to, but only which topic it need to subscribe to. In the case of this subscriber it listens to what is published on the Commands topic, it can put up to 1000 messages into a queue, if there are more in the buffer, they will get discarded.\\ 
+To access the subscriber the function named chatterCallback is necessary, and every time something is published on the topic Commands it will be written to the chatterCallback function.\\
 
 \begin{figure}[h]
 \begin{center}
@@ -61,6 +61,7 @@ To access the subscriber the function named chatterCallback is necessary, and ev
 \caption{subscriber}
 \end{center}
 \end{figure}\label{fig:subscriber}
+
 
 \section{UI\_turtlesim\_mover}
 
@@ -70,10 +71,9 @@ Afterwards the global parameters are set, such as:\\
 \texttt{ros::Subscriber sub1;}\\
 \texttt{string done;}\\
 then a void function is created.\\
-
-\begin{figure}[h]
+\begin{figure}[h!]
 \begin{center}
-\includegraphics[width=.5\textwidth]{figures/switch.png}
+\includegraphics[width=.45\textwidth]{figures/switch.png}
 \caption{VoidFunction of UI}
 \end{center}
 \end{figure}\label{fig:switch}
@@ -89,8 +89,7 @@ While ros is okay, the for loop will then run, which means that if the expressio
 In the end it will make the loop spinOnce, and then return 0;\\
 
 \section{Turtlesim\_mover}
-
-In this node there is an need for having the position of the turtlesim. The method as above is used the differences is that the turtlesim publishes the position on the topic "/turtle1/pose" and the turtlesim::Pose is the message that gets published. Every time the turtlesim moves or turns a new message is published. The void function poseCallback then set the coordinates for the turtlesim in the variables xr, yr and the heading in dr. The dr has be converted from a radian to degrees that makes it easier to work with and it is multiplied 100 to get more acquired see figure \ref{fig:pose}. The data in the message is a float 64 see picture\ref{fig:turtlesimPose}, this gets converted to an integer because integers is exact not as floats that is an approximate value.\\
+In this node it is necessary to have the position of the turtlesim. The method as above is used. The differences are that the turtlesim publishes the position on the topic "/turtle1/pose" and the turtlesim::Pose is the message which gets published. Every time the turtlesim moves or turns a new message is published. The void function poseCallback then set the coordinates for the turtlesim in the variables xr, yr and the heading in dr. The dr has been converted from a radian to degrees which make it easier to work with and it is then multiplied by 100 to get the decimals when converting to integers see figure \ref{fig:pose}. The data in the message is a float 64 see picture\ref{fig:turtlesimPose}, this gets converted to an integer because integers are exact, and not like floats which are approximate values.\\
 
 \begin{figure}[h]
 \begin{center}
@@ -99,7 +98,7 @@ In this node there is an need for having the position of the turtlesim. The meth
 \end{center} 
 \end{figure}
 
-A subscriber is declared  that listens to the topic "Commands", on this topic is published a std::msgs message, see \ref{fig:stdmsgs}, that by the UI\_turtlesim\_mover. There is declared a void function that set a variable. When a new std::msgs messages is published on the topic "Commands", the data in the message gets stored in a string variable "ans" see figure \ref{fig:ChatterCallback}.\\
+A subscriber is declared which listens to the topic "Commands", on this topic is published a std::msgs message, see \ref{fig:stdmsgs}, that by the UI\_turtlesim\_mover. There is declared a void function which sets a variable. When a new std::msgs message is published on the topic "Commands", the data in the message gets stored in a string variable "ans" see figure \ref{fig:ChatterCallback}.\\
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=.5\textwidth]{figures/chatterCallback.png}
@@ -108,7 +107,7 @@ A subscriber is declared  that listens to the topic "Commands", on this topic is
 \end{figure}
 
 
-The "ans" variable is set to "1" the first if statement is evaluated to true see figure \ref{fig:while}.Then the it enters the if statement and calls function named moving  that publishes to the UI\_turtlesim\_mover that the turtlesim is moving.\\
+The "ans" variable is set to "1" the first if statement is evaluated to true see figure \ref{fig:while}.Then the it enters the if statement and calls function named moving which publishes to the UI\_turtlesim\_mover that the turtlesim is moving.\\
 
 \begin{figure}[h]
 \begin{center}
@@ -117,7 +116,7 @@ The "ans" variable is set to "1" the first if statement is evaluated to true see
 \end{center}
 \end{figure}
 
-Then it calls the void function circle. In the function circle the while loop while run until statement in the brackets is not true see figure \ref{fig:while}. In the loop a linear and an angular velocity stored in the msg, that reference to the geometry\_msgs::Twist messages. The message is then publishing on the topic "/turtle1/cmd\_vel" and ros will spin once to make sure that the message is published.\\  When the dr is above 35900 or 359${^\circ}$ the circle function will return to main function.
+Then it calls the void function circle. In the function circle the while loop run until the statement in the brackets is not true, see figure \ref{fig:while}. In the loop a linear and an angular velocity stored in the msg references to the geometry\_msgs::Twist messages. The message is then publishing on the topic "/turtle1/cmd\_vel" and ros will spin once to make sure that the message is published.\\  When the dr is above 35900 or 359${^\circ}$ the circle function will return to main function.\\
 
 \begin{figure}[h]
 \begin{center}
@@ -128,7 +127,7 @@ Then it calls the void function circle. In the function circle the while loop wh
 
 \section{RandomWalk}
 
-A simple code for randomwalk is introduced here:
+A simple code for randomwalk is introduced here:\\
 
 \begin{figure}[h]
 \begin{center}
@@ -137,7 +136,21 @@ A simple code for randomwalk is introduced here:
 \end{center}
 \end{figure}
 
-The code focusses on a random number. This is stated through Srand(Time(NULL)), where Srand will keep giving random steps to the turtlesim and the NULL will keep making the numbers different from each other. This is an important process for the RandomWalk since it must not repeat itself.\\
+The code is focusing on a random number. This is stated through Srand(Time(NULL)), where Srand will keep giving random steps to the turtlesim and the NULL will keep making the numbers different from each other. This is an important process for the RandomWalk since it must not repeat itself.\\
 So the code is given a loop to repeat while(count>20), and count=0;. Hereby this loop will continue until the process is shut down or the count has surpassed 20.\\
 The path which the message has to be sent by is geometry\_message::twist. This means that the linear and angular messages will x and z will be given integers (double) with random numbers in it, so it will move accordingly to the random number present in that loop. These random numbers has to be stated in the interval from 1-10 and 5-10, since it is forced upon the x and z in (10\%+1) and (10\%-5).\\
 In the end it will SpinOnce and then the count++ will make the value rise after every execute, which will stop the process when count=20.\\
+
+\section{Rqt graph}
+
+The rqt graph is a visualization of how the nodes are communicating between the different nodes . In this project the group created two nodes which are communicating back and fourth, see figure \ref{fig:rqt}, but only the mover node is in contact with both the UI-node and the turtlesim nodes.\\
+
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=.8\textwidth]{figures/rqt-turtlesim.png}
+\caption{Rqt graph}\label{fig:rqt}
+\end{center}
+\end{figure}
+
+A feedback loop between the UI and the mover, is illustrated in figure \ref{fig:rqt} as an arrow points to the mover from the UI and vice versa. What happens in the feedback loop of UI and mover, is that the user input gets published and mover publishes a string which states either the turtle is moving or it is a waiting a command.\\
